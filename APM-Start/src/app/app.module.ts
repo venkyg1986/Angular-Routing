@@ -20,7 +20,14 @@ import { RouterModule } from "@angular/router";
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot(
+      [
+        { path: "welcome", component: WelcomeComponent },
+        { path: "", redirectTo: "welcome", pathMatch: "full" },
+        { path: "**", component: PageNotFoundComponent },
+      ],
+      { useHash: true }
+    ),
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
     ProductModule,
     UserModule,
